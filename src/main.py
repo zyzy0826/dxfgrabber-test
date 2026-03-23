@@ -5,8 +5,8 @@ import analyze_blocks
 import analyze_grids
 
 def main():
-    # 設定檔案路徑 (假設執行時的終端機位在 src 資料夾或專案根目錄)
-    file_path = "../data/road_markings.dxf" 
+    # 設定檔案路徑
+    file_path = "data/road_markings.dxf" 
     
     print("正在讀取 DXF 檔案...")
     try:
