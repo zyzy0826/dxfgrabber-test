@@ -2,10 +2,13 @@
 
 ## 前言
 
-本專案主要使用 Python 進行 DXF 圖檔的讀取、圖層過濾與空間資料萃取，核心依賴套件為 `dxfgrabber`。
+本專案主要使用 Python 進行 DXF 圖檔的讀取、圖層過濾與空間資料萃取，核心依賴套件為 `dxfgrabber` 與 `shapely`。
 
 **dxfgrabber 的主要功能與使用方式**
 `dxfgrabber` 是一個專注於「讀取」與「資訊抓取」的輕量級 DXF 解析套件。它的設計理念是將複雜的 DXF 幾何資料結構，轉化為 Python 開發者最熟悉的基礎資料型態（如 List 陣列與 Dictionary 字典）。使用者可以透過簡單的迴圈與物件屬性（如 `entity.layer` 或 `entity.dxftype`），快速遍歷整張圖紙、抓取特定圖層名稱、並讀取線段座標、多邊形、圖塊（Blocks）等幾何特徵，非常適合用於圖資的盤點與初步資料整理。
+
+**shapely 的主要功能與使用方式**
+`shapely` 是一個強大的 Python 幾何物件處理套件。在本專案中，它主要負責將 `dxfgrabber` 抓取出的座標點序列轉換為幾何實體（如 `Polygon`），並進一步計算物件的面積、重心、邊界框等關鍵資訊。這對於需要進行空間運算（如過濾特定面積的多邊形）的模組至關重要。
 
 **dxfgrabber 與 ezdxf 的差別**
 * **讀寫能力**：`ezdxf` 是一個全功能的強大套件，支援 DXF 檔案的讀取、建立、修改與儲存；而 `dxfgrabber` 為**純讀取 (Read-only)**，無法將修改後的物件存回原檔案。
@@ -15,11 +18,18 @@
 
 ## 安裝
 
-在開始執行本專案前，請先確認您的開發環境已安裝 Python 3，並透過 pip 安裝 `dxfgrabber`：
+在開始執行本專案前，請先確認您的開發環境已安裝 Python 3，並透過 pip 安裝核心相依套件：
 
 ```bash
 pip install dxfgrabber
 ```
+
+```bash
+pip install shapely
+```
+
+*   **dxfgrabber**：用於讀取 DXF 檔案中的原始幾何資料。
+*   **shapely**：用於進行進階的空間幾何分析（如多邊形面積計算、幾何特徵判定等）。
 
 ---
 
