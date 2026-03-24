@@ -4,6 +4,23 @@
 
 本專案旨在透過分析 DXF 繪圖檔，自動識別並統計交通標線資訊，包含圖層盤點、標線分類統計及幾何特徵分析。
 
+## 專案結構
+
+```text
+dxfgrabber-test/
+├── README.md
+├── data/
+│   ├── road_markings.dwg
+│   └── road_markings.dxf
+└── src/
+    ├── analyze_arrows.py
+    ├── analyze_blocks.py
+    ├── analyze_grids.py
+    ├── analyze_lines.py
+    ├── dxf_inventory.py
+    └── main.py
+```
+
 ## 可提取資訊統計表
 
 透過此工具，您可以從 DXF 檔案中獲得以下資訊：
